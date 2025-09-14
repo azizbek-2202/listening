@@ -4276,10 +4276,11 @@
                     chunks.push(text.slice(0, 3500));
                     text = text.slice(3500);
                 }
+                const BACKEND_URL = "https://sizning-backend.vercel.app/send-message";
 
                 try {
                     for (const chunk of chunks) {
-                        const res = await fetch("http://localhost:3000/send-message", {
+                        const res = await fetch(`${BACKEND_URL}`, {
                             method: "POST",
                             headers: { "Content-Type": "application/json" },
                             body: JSON.stringify({ text: chunk })
